@@ -3,8 +3,13 @@
 sh_regex=".*\.sh$"
 sh_perms="755"
 
-editor=$1
+editor=$(which "$1")
 shift
+
+if [ -z "$editor" ] ; then
+	echo "Unable to find editor. Check name/path for typos?"
+	exit 1
+fi
 
 for arg in "$@" ; do
 	if [ ! -e "$arg" ] && echo "$arg" | grep -q "$sh_regex" ; then
@@ -12,4 +17,4 @@ for arg in "$@" ; do
 	fi
 done
 
-/usr/bin/"$editor" "$@"
+"$editor" "$@"
