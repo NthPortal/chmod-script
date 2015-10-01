@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# Usage: chmod.sh <editor> <file(s)>
+
 sh_regex=".*\.sh$"
 sh_perms="755"
 
